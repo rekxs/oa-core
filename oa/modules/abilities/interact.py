@@ -1,5 +1,6 @@
 import keyboard
-
+import random
+import time
 from oa.core import oa
 from oa.modules.abilities.core import call_function, put
 from oa.modules.abilities.system import find_file
@@ -45,3 +46,7 @@ def play(fname):
 def mind(name, history = 1):
     """ Switch the current mind to `name`. """
     oa.core.parts.mind.set_mind(name, history)
+
+def say_affirmative():
+    response = ['affirmative', 'sure', 'alright', 'ofcourse', 'okay', 'indeed', 'by all means', 'absolutely', 'roger that', 'certainly']
+    say(random.choice(response))

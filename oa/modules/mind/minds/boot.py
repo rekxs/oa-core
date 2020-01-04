@@ -7,7 +7,7 @@ from oa.modules.abilities.interact import say, play, mind
 kws = {}
 command = command_registry(kws)
 
-@command("boot mind")
+@command(["boot mind","warm up"])
 def response_sound():
   play('r2d2.wav')
 
