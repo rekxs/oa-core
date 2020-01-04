@@ -39,3 +39,16 @@ Windows Python Install (Python 3.x)
 * Say "Open Assistant!" to launch root mind. Say "Root Mind!" to see if you can get the reply, "Hello World!"
 * Say "List commands!" to get a list of available voice commands.
 * Add your own!
+
+# Using Open Assistant with TP-LINK Kasa Smartbulb and Smartplugs on Ubuntu
+
+* Please make sure that your Kasa smartdevice is properly configured with static ip address.
+* Install pyHS100 `pip3 install pyHS100`
+* [Download Open Assistant](https://github.com/kidsodateless/oa-core/archive/master.zip)
+* Open oa-core/oa/modules/abilities/Kasa_smart.py with editor. Change the ip address accordingly for each smart devices.  Ex.``bulb = SmartBulb("192.168.1.x")``
+* Run Open Assistant from within the unzipped directory: ``python -m oa``
+* Make sure your microphone is working and levels are set properly.
+* Say "Boot Mind!" or "Warm Up!" as a listening test. If you hear R2D2, boot mind is listening.
+* Say "Open Assistant!" to launch root mind. Say "Root Mind!" to see if you can get the reply, "Hello World!"
+* Say "List commands!" to get a list of available voice commands.
+* Add your own!
