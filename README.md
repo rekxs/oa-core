@@ -43,7 +43,7 @@ Windows Python Install (Python 3.x)
 # Using Open Assistant with TP-LINK Kasa Smartbulb and Smartplugs on Ubuntu
 
 * Please make sure that your Kasa smartdevice is properly configured with static ip address.
-* Install pyHS100 `pip3 install pyHS100`
+* Install [pyHS100](https://github.com/GadgetReactor/pyHS100) `pip3 install pyHS100`
 * [Download Open Assistant](https://github.com/kidsodateless/oa-core/archive/master.zip)
 * Open oa-core/oa/modules/abilities/Kasa_smart.py with editor. Change the ip address accordingly for each smart devices.  Ex.``bulb = SmartBulb("192.168.1.x")``
 * Run Open Assistant from within the unzipped directory: ``python -m oa``
