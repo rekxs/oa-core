@@ -40,7 +40,7 @@ Windows Python Install (Python 3.x)
 * Say "List commands!" to get a list of available voice commands.
 * Add your own!
 
-# Using Open Assistant with TP-LINK Kasa Smartbulb and Smartplugs on Ubuntu
+## Using Open Assistant with TP-LINK Kasa Smartbulb and Smartplugs on Ubuntu
 
 * Please make sure that your Kasa smartdevice is properly configured with static ip address.
 * Install [pyHS100](https://github.com/GadgetReactor/pyHS100) `pip3 install pyHS100`
@@ -52,5 +52,5 @@ Windows Python Install (Python 3.x)
 * Say "Open Assistant!" to launch root mind. Say "Root Mind!" to see if you can get the reply, "Hello World!"
 * Say "List commands!" to get a list of available voice commands.
 * Add your own!
-## DEMO
+## Demo
 * [My Open Assistant named Charlie](https://youtu.be/D99V9Ge9IaE?t=146)
