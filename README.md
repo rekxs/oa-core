@@ -52,3 +52,5 @@ Windows Python Install (Python 3.x)
 * Say "Open Assistant!" to launch root mind. Say "Root Mind!" to see if you can get the reply, "Hello World!"
 * Say "List commands!" to get a list of available voice commands.
 * Add your own!
+## DEMO
+* [My Open Assistant named Charlie](https://youtu.be/D99V9Ge9IaE?t=146)
