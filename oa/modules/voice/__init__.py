@@ -2,8 +2,6 @@
 
 import logging
 
-import pyttsx3
-
 from oa.modules.abilities.core import get, put
 
 
@@ -20,8 +18,13 @@ else:
 
 def _in(ctx):
     if not flMac:
-        tts = pyttsx3.init()
+        if os.system('which festival') != 0:
+            tts = pyttsx3.init()
+        else:
+            engine = "festival"
+            tts = pyttsx3.init()
 
+    
     while not ctx.finished.is_set():
         s = get()
         logging.debug("Saying: %s", s)
@@ -35,11 +38,14 @@ def _in(ctx):
             _tts = subprocess.Popen(['say'], stdin=_msg.stdout)
             _msg.stdout.close()
             _tts.communicate()
-        elif engine == "festival":
-            os.system('echo "{0}" | festival --tts'.format(s))
+        #elif engine === "festival":
+        #    os.system('echo "{0}" | festival --tts'.format(s))
         else:
-            tts.say(s)
-            tts.runAndWait()
+            if engine == "festival":
+                os.system('echo "{0}" | festival --tts'.format(s))
+            else:
+                tts.say(s)
+                tts.runAndWait()
 
         # Wait until speaking ends.
         # Continue ear (listening). Unmute TTS.

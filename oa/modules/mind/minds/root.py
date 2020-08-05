@@ -1,6 +1,6 @@
 from oa.core.util import command_registry
 import time
-from oa.modules.abilities.interact import say, play, mind, say_affirmative
+from oa.modules.abilities.interact import say, play, mind#, say_affirmative
 from oa.modules.abilities.other import read_news_feed, diagnostics, read_forecast
 from oa.modules.abilities.other import say_day, say_last_command, say_time
 
@@ -64,54 +64,54 @@ def what_time():
 
 @command(["on the lights", "turn on the lights", "licht an", "lumos"])
 def lights_lights_on():
-    say_affirmative()
+    #say_affirmative()
     bulb_turn_on()
 
 @command(["off the lights", "turn off the lights", "licht aus" ])
 def lights_lights_off():
-    say_affirmative()
+    #say_affirmative()
     bulb_turn_off()
 
 # Smart bulb colors
 '''
 @command("change the light color to yellow")
 def lights_lights_yellow():
-    say_affirmative()
+    #say_affirmative()
     bulb_color_yellow()
 
 @command("change the light color to red")
 def lights_lights_red():
-    say_affirmative()
+    #say_affirmative()
     bulb_color_red()
 
 @command("change the light color to blue")
 def lights_color_blue():
-    say_affirmative()
+    #say_affirmative()
     bulb_color_blue()
 
 @command("change the light color to green")
 def lights_color_green():
-    say_affirmative()
+    #say_affirmative()
     bulb_color_green()
 
 @command("change the light color to purple")
 def light_color_purple():
-    say_affirmative()
+    #say_affirmative()
     bulb_color_purple()
 
 @command("change the light color to pink")
 def lights_color_pink():
-    say_affirmative()
+    #say_affirmative()
     bulb_color_pink()
 
 @command("change the light color to white")
 def lights_color_white():
-    say_affirmative()
+    #say_affirmative()
     bulb_color_white()
 
 @command("change the light color to lime")
 def lights_color_lime():
-    say_affirmative()
+    #say_affirmative()
     bulb_color_lime()
 '''
 @command(["dim up"])
@@ -125,23 +125,23 @@ def lights_down_10():
 #Smartbulb brightness
 @command (["set light brightness to one", "set light to dimmest", "set to the dimmest", "set dimmest", "dim full"])
 def lights_brightness_1():
-    say_affirmative()
+    #say_affirmative()
     bulb_brightness_1()
 
 @command ("set light brightness to five")
 def lights_bright_5():
-    say_affirmative()
+    #say_affirmative()
     bulb_brightness_5()
 
 
 @command ("set light brightness to ten")
 def lights_bright_10():
-    say_affirmative()
+    #say_affirmative()
     bulb_brightness_10()
 
 @command (["set light brightness to fifty", "dim fifty", "dim half", "light half", "dim lights to fifty"])
 def lights_bright_50():
-    say_affirmative()
+    #say_affirmative()
     bulb_brightness_50()
 
 @command (["it's too bright", "it's too dark in here", "it's too dim"])
@@ -153,7 +153,7 @@ def lights_too_bright():
 
 @command (["set light brightness to one hundred", "full brightness", "lumos maxima"])
 def lights_bright_100():
-    say_affirmative()
+    #say_affirmative()
     bulb_brightness_100()
 
 '''
@@ -164,13 +164,13 @@ def red_alert():
 
 @command("countdown")
 def count_down():
-    say_affirmative()
+    #say_affirmative()
     play('countdown.wav')
 
 
 @command("power up plug2")
 def turn_on_plug_2():
-    say_affirmative()
+    #say_affirmative()
     on_plug_2()
     say('done')
 
@@ -184,6 +184,6 @@ def turn_off_plug_2():
 
 @command("dancing lights")
 def dancing_light():
-    say_affirmative()
+    #say_affirmative()
     play('Chad_Crouch_Algorithms.wav')
     dance_light()
