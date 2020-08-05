@@ -1,4 +1,6 @@
-from pyHS100 import SmartPlug, SmartBulb, SmartStrip
+import asyncio
+#from pyHS100 import SmartPlug, SmartBulb, SmartStrip
+from kasa import SmartPlug, SmartBulb, SmartStrip
 from pprint import pformat as pf
 import time
 
@@ -12,16 +14,17 @@ print('loading smartplug <--- HS100')
 plug = SmartPlug("192.168.1.x")
 
 
-def plug_turn_on():
-    plug.turn_on()
-def plug_turn_off():
-    plug.turn_off()
+async def plug_turn_on():
+    await plug.update()
+    await plug.turn_on()
+async def plug_turn_off():
+    await plug.turn_off()
 
 
 ### TPLINK KASA KL130
 ### Change the ip addresss accordingly
-print('Loading smartbulb <--- KL130')
-bulb = SmartBulb("192.168.1.24")
+print('Loading smartbulb <--- KL60')
+bulb = SmartBulb("192.168.2.117")
 
 
 def red_alert_mode():
@@ -152,30 +155,56 @@ def bulb_color_lime():
 
 # Turn ON and OFF state with checker
 def bulb_turn_on():
-    if bulb.is_on == True:
-      say("But It's already turn on. Nothing to be done.")
-    else:
-      bulb.turn_on()
-
+    if bulb:
+      asyncio.run(bulb.update())
+      if bulb.is_on == True:
+        say("But It's already turn on. Nothing to be done.")
+      else:
+        asyncio.run(bulb.turn_on())
+    
 def bulb_turn_off():
+  if bulb:
+    asyncio.run(bulb.update())
     if bulb.is_off == True:
       say("But it's already turn off. Nothing to be done.")
     else:
-      bulb.turn_off()
+      asyncio.run(bulb.turn_off())
 
 # bulb brightness
+def bulb_dim_down_10():
+  if bulb:
+    asyncio.run(bulb.update())
+    cur = bulb.brightness
+    asyncio.run(bulb.set_brightness(cur-10))
+def bulb_dim_up_10():
+  if bulb:
+    asyncio.run(bulb.update())
+    cur = bulb.brightness
+    asyncio.run(bulb.set_brightness(cur+10))
 def bulb_brightness_1():
-    bulb.brightness = 1
+  if bulb:
+    asyncio.run(bulb.update())
+    asyncio.run(bulb.set_brightness(1))
 def bulb_brightness_5():
-    bulb.brightness = 5
+  if bulb:
+    asyncio.run(bulb.update())
+    asyncio.run(bulb.set_brightness(5))
 def bulb_brightness_10():
-    bulb.brightness = 10
+  if bulb:
+    asyncio.run(bulb.update())
+    asyncio.run(bulb.set_brightness(10))
 def bulb_brightness_50():
-    bulb.brightness = 50
+  if bulb:
+    asyncio.run(bulb.update())
+    asyncio.run(bulb.set_brightness(50))
 def bulb_brightness_30():
-    bulb.brightness = 30
+  if bulb:
+    asyncio.run(bulb.update())
+    asyncio.run(bulb.set_brightness(30))
 def bulb_brightness_100():
-    bulb.brightness = 100
+  if bulb:        
+    asyncio.run(bulb.update())
+    asyncio.run(bulb.set_brightness(100))
 
 
 ### TPLINK KASA HS300

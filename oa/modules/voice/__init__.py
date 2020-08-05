@@ -9,8 +9,10 @@ from oa.modules.abilities.core import get, put
 
 
 import platform
+import os
 sys_os = platform.system()
 flMac = (sys_os == 'Darwin')
+engine = "default"
 if flMac:
     import subprocess
 else:
@@ -19,8 +21,10 @@ else:
 
 def _in():
     if not flMac:
-        tts = pyttsx3.init()
-
+        if os.system('which festival') != 0: 
+            tts = pyttsx3.init()
+        else: 
+            engine = "festival"
     while not oa.core.finished.is_set():
         s = get()
         logging.debug("Saying: %s", s)
@@ -34,6 +38,8 @@ def _in():
             _tts = subprocess.Popen(['say'], stdin=_msg.stdout)
             _msg.stdout.close()
             _tts.communicate()
+        elif engine == "festival":
+            os.system('echo "{0}" | festival --tts'.format(s))
         else:
             tts.say(s)
             tts.runAndWait()

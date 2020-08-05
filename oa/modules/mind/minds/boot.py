@@ -10,10 +10,11 @@ command = command_registry(kws)
 @command(["boot mind","warm up"])
 def response_sound():
   play('r2d2.wav')
-
-@command("open assistant")
+  
+@command(["open assistant", "Kali wake up", "Hey Kali", "Kali"])
 def open_root():
-  play('beep_open.wav')
+  #play('beep_open.wav')
+  say('Whats up?')
   mind('root')
 
 @command(["list commands", "help"])
@@ -21,6 +22,6 @@ def list_commands():
     say('The currently available voice commands are..')
     [say(cmd) for cmd in kws.keys()]
 
-@command("stop listening")
+@command(["stop listening", "no swiper no spying", "no spying", "swipter no spying"])
 def do_exit():
     oa.core.finished.set()
