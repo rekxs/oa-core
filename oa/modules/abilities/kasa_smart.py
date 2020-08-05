@@ -10,10 +10,6 @@ from oa.modules.abilities.interact import say
 ### TPLINK KASA HS100
 ### Change the ip addresss accordingly
 
-print('loading smartplug <--- HS100')
-plug = SmartPlug("192.168.1.x")
-
-
 async def plug_turn_on():
     await plug.update()
     await plug.turn_on()
@@ -23,8 +19,16 @@ async def plug_turn_off():
 
 ### TPLINK KASA KL130
 ### Change the ip addresss accordingly
+bulbs = {}
+
 print('Loading smartbulb <--- KL60')
-bulb = SmartBulb("192.168.2.117")
+print('Loading smartbulb <--- KL110')
+bulbs = {
+  "schlafzimmer": SmartBulb("192.168.2.117"),
+  "wohnzimmer": SmartBulb("192.168.2.119")
+}
+
+#wohnzimmer = SmartBulb("192.168.2.119")
 
 
 def red_alert_mode():
@@ -154,7 +158,8 @@ def bulb_color_lime():
     bulb.hsv = (106, 48, 100)
 
 # Turn ON and OFF state with checker
-def bulb_turn_on():
+def bulb_turn_on(room):
+    bulb = bulbs[room]
     if bulb:
       asyncio.run(bulb.update())
       if bulb.is_on == True:
@@ -162,7 +167,8 @@ def bulb_turn_on():
       else:
         asyncio.run(bulb.turn_on())
     
-def bulb_turn_off():
+def bulb_turn_off(room):
+  bulb = bulbs[room]
   if bulb:
     asyncio.run(bulb.update())
     if bulb.is_off == True:
@@ -171,37 +177,45 @@ def bulb_turn_off():
       asyncio.run(bulb.turn_off())
 
 # bulb brightness
-def bulb_dim_down_10():
+def bulb_dim_down_10(room):
+  bulb = bulbs[room]
   if bulb:
     asyncio.run(bulb.update())
     cur = bulb.brightness
     asyncio.run(bulb.set_brightness(cur-10))
-def bulb_dim_up_10():
+def bulb_dim_up_10(room):
+  bulb = bulbs[room]
   if bulb:
     asyncio.run(bulb.update())
     cur = bulb.brightness
     asyncio.run(bulb.set_brightness(cur+10))
-def bulb_brightness_1():
+def bulb_brightness_1(room):
+  bulb = bulbs[room]
   if bulb:
     asyncio.run(bulb.update())
     asyncio.run(bulb.set_brightness(1))
-def bulb_brightness_5():
+def bulb_brightness_5(room):
+  bulb = bulbs[room]
   if bulb:
     asyncio.run(bulb.update())
     asyncio.run(bulb.set_brightness(5))
-def bulb_brightness_10():
+def bulb_brightness_10(room):
+  bulb = bulbs[room]
   if bulb:
     asyncio.run(bulb.update())
     asyncio.run(bulb.set_brightness(10))
-def bulb_brightness_50():
+def bulb_brightness_50(room):
+  bulb = bulbs[room]
   if bulb:
     asyncio.run(bulb.update())
     asyncio.run(bulb.set_brightness(50))
-def bulb_brightness_30():
+def bulb_brightness_30(room):
+  bulb = bulbs[room]
   if bulb:
     asyncio.run(bulb.update())
     asyncio.run(bulb.set_brightness(30))
-def bulb_brightness_100():
+def bulb_brightness_100(room):
+  bulb = bulbs[room]
   if bulb:        
     asyncio.run(bulb.update())
     asyncio.run(bulb.set_brightness(100))
@@ -210,8 +224,6 @@ def bulb_brightness_100():
 ### TPLINK KASA HS300
 ### Change the ip addresss accordingly
 
-print('LOADING SMART-STRIP <--- HS300')
-strip = SmartStrip("192.168.1.22")
 
 # Plug1
 def on_plug_0():
