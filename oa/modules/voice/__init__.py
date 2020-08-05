@@ -4,7 +4,6 @@ import logging
 
 import pyttsx3
 
-from oa.core import oa
 from oa.modules.abilities.core import get, put
 
 
@@ -19,13 +18,11 @@ else:
     import pyttsx3
 
 
-def _in():
+def _in(ctx):
     if not flMac:
-        if os.system('which festival') != 0: 
-            tts = pyttsx3.init()
-        else: 
-            engine = "festival"
-    while not oa.core.finished.is_set():
+        tts = pyttsx3.init()
+
+    while not ctx.finished.is_set():
         s = get()
         logging.debug("Saying: %s", s)
 

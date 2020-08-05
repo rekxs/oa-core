@@ -12,9 +12,9 @@ kws = {}
 
 command = command_registry(kws)
 
-@command("Kali")
-def hello():
-    say('Im here. How may i help you?')
+@command("root mind")
+def hello_world():
+    say('- Hello world!')
 
 @command(["close assistant", "go to sleep", "kali stop listening", "stop listening"])
 def close_assistant():
